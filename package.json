@@ -19,6 +19,7 @@
   "author": "Florin Toader",
   "license": "ISC",
   "devDependencies": {
+    "jasmine": "^2.6.0",
     "standard": "^10.0.2"
   }
 }
