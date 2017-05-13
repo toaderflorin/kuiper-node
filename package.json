@@ -1,0 +1,24 @@
+{
+  "name": "kuiper",
+  "version": "1.0.0",
+  "description": "A simple content management system.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "jasmine": "^2.6.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "sqlite3": "^3.1.8"
+  },
+  "author": "Florin Toader",
+  "license": "ISC",
+  "devDependencies": {
+    "standard": "^10.0.2"
+  }
+}

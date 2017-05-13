@@ -1,0 +1,24 @@
+body {
+    font-family: Roboto; 
+    padding:10px;
+    color: #777;
+    background: url(gradient.png) repeat-x;
+    font-weight: 300;
+}
+
+a {
+    text-decoration: none;
+    color: salmon;
+}
+
+h1 {    
+    font-size: 31px;
+    font-weight: 400;
+}
+
+h2 {    
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 22px;
+    margin-bottom: 6px;    
+}
