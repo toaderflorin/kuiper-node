@@ -7,7 +7,9 @@
 <h2>{{title}}</h2>
 <div>{{content}}</div>
 
-<a href="/{{id}}">Show</a> | 
+{{#if ownProfile}}
+<a href="/{{id}}">Show</a> |
 <a href="/delete/{{id}}">Delete</a> 
+{{/if}} 
 
 {{/each}}

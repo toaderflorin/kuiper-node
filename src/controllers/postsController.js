@@ -3,8 +3,10 @@ const repositories = require('../repositories')
 
 class PostsController {
   async index(req, res) {
-    const posts = await repositories.postsRepository.list(global.user)
-    res.render('posts/index.hbs', { posts })
+    const user = req.params['user']
+    const posts = await repositories.postsRepository.list(user)
+    const ownProfile = (user === global.user)
+    res.render('posts/index.hbs', { posts, ownProfile })
   }
 
   async create(req, res) {
