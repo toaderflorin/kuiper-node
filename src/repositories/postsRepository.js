@@ -14,12 +14,14 @@ class PostsRepository {
   }
 
   async get(id) {
-    const result = await this._sqliteWrapper.all(`SELECT * FROM posts WHERE id=${id}`)
+    const query = `SELECT * FROM posts WHERE id='${id}'`    
+    const result = await this._sqliteWrapper.all(`SELECT * FROM posts WHERE id=${id}`)    
     return result[0]
   }
 
   async list(user) {
-    const result = await this._sqliteWrapper.all(`SELECT * FROM posts WHERE user='${user}'`)
+    const query = `SELECT * FROM posts WHERE user='${user}'`
+    const result = await this._sqliteWrapper.all(query)
     return result
   }
 

@@ -26,9 +26,9 @@ class PostsController {
     res.send('Not implemented yet')
   }
 
-  async show(req, res, next) {
-    const id = Number.parseInt(req.params['id'])
-    const post = await repositories.postsRepository.get(id)
+  async show(req, res) {
+    const id = Number.parseInt(req.params['id'])   
+    const post = await repositories.postsRepository.get(id)    
     res.render('posts/show.hbs', { user: global.user, post })
   }
 
