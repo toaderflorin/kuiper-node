@@ -1,19 +1,24 @@
 const repositories = require('../repositories')
 
 class UsersController {
-  logon(req, res) {
+  async logon(req, res) {
     if (req.method === 'GET') {
       res.render('users/logon.hbs')
     } else if (req.method === 'POST') {
       global.user = req.body.user
-      res.redirect(`/posts`)
+      res.redirect(`http://localhost:3000/posts`)
+    }
+  }
+
+  async logoff(req, res) {
+    if (req.method === 'GET') {
+      res.redirect('http://localhost:3000')
     }
   }
 
   async users(req, res) {
     const users = await repositories.postsRepository.getUsers()
-    console.log({ users })
-    res.render('users/list', { users })
+    res.render('users/list', { user: global.user, users })
   }
 }
 

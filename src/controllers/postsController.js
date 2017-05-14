@@ -6,16 +6,16 @@ class PostsController {
     const user = req.params['user']
     const posts = await repositories.postsRepository.list(user)
     const ownProfile = (user === global.user)
-    res.render('posts/index.hbs', { posts, ownProfile })
+    res.render('posts/index.hbs', { user: global.user, posts, ownProfile })
   }
 
   async create(req, res) {
     if (req.method === 'GET') {
-      res.render('posts/create.hbs')
+      res.render('posts/create.hbs', { user: global.user })
     } else if (req.method === 'POST') {
       const post = new models.Post(global.user, req.body.title, req.body.content)
       await repositories.postsRepository.insert(post)
-      res.redirect('/posts')
+      res.redirect('/posts/' + global.user)
     }
   }
 
@@ -23,10 +23,10 @@ class PostsController {
     res.send('Not implemented yet')
   }
 
-  async show(req, res) {
+  async show(req, res, next) {
     const id = Number.parseInt(req.params['id'])
     const post = await repositories.postsRepository.get(id)
-    res.render('posts/show.hbs', post)
+    res.render('posts/show.hbs', { user: global.user, post })
   }
 
   async delete(req, res) {

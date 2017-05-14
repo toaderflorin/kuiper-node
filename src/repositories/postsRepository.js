@@ -29,7 +29,6 @@ class PostsRepository {
 
   async getUsers() {
     const result = await this._sqliteWrapper.all(`SELECT DISTINCT user FROM posts`)
-    console.log(result)
     return result
   }
 }

@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:3000/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
 </head>
 
@@ -9,9 +9,18 @@
   <div class="header">
     <b>    
       kuiper      
-    </b>
-    >
-    something | additional | other
+    </b> 
+    {{#if user}}
+    >   
+    welcome 
+    <b>{{user}}</b>
+    >  
+    <a href="http://localhost:3000/new">new</a> |
+    <a href="http://localhost:3000/posts/{{user}}">profile</a> |
+    <a href="http://localhost:3000/users">users</a> |  
+    <a href="http://localhost:3000/logoff">log off</a>
+
+    {{/if}}
   </div>
   <div style="height: 4px; background: linear-gradient(0, #FFF, #BBB);"></div>
   <div class="main2">
