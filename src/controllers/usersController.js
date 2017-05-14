@@ -6,7 +6,7 @@ class UsersController {
       res.render('users/logon.hbs')
     } else if (req.method === 'POST') {
       global.user = req.body.user
-      res.redirect(`http://localhost:3000/posts`)
+      res.redirect(`http://localhost:3000/posts/${global.user}`)
     }
   }
 

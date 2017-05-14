@@ -10,16 +10,15 @@
     <b>    
       kuiper      
     </b> 
-    {{#if user}}
-    >   
-    welcome 
-    <b>{{user}}</b>
-    >  
+    
+    {{#if user}} > welcome
+    
+    <b>{{user}}</b> >
     <a href="http://localhost:3000/new">new</a> |
     <a href="http://localhost:3000/posts/{{user}}">profile</a> |
-    <a href="http://localhost:3000/users">users</a> |  
-    <a href="http://localhost:3000/logoff">log off</a>
-
+    <a href="http://localhost:3000/users">users</a> |
+    <a href="http://localhost:3000/logoff">log off</a> 
+    
     {{/if}}
   </div>
   <div style="height: 4px; background: linear-gradient(0, #FFF, #BBB);"></div>

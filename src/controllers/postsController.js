@@ -6,7 +6,10 @@ class PostsController {
     const user = req.params['user']
     const posts = await repositories.postsRepository.list(user)
     const ownProfile = (user === global.user)
-    res.render('posts/index.hbs', { user: global.user, posts, ownProfile })
+    res.render('posts/index.hbs', {
+      user: global.user,
+      posts: posts.map((p) => { return Object.assign(p, { ownProfile }) }),      
+    })
   }
 
   async create(req, res) {
@@ -32,7 +35,7 @@ class PostsController {
   async delete(req, res) {
     const id = Number.parseInt(req.params['id'])
     await repositories.postsRepository.delete(id)
-    res.redirect('/posts')
+    res.redirect(`/posts/${global.user}`)
   }
 }
 
