@@ -6,14 +6,7 @@ const app = express()
 const controllers = require('./controllers')
 const repos = require('./repositories')
 const passport = require('passport')
-
-const authenticate = (req, res, next) => {
-  if (!global.user && req.url != '/') {
-    res.redirect('http://localhost:3000/')
-  } else {
-    next()
-  }
-}
+const authenticate = require('./authenticate')
 
 const start = async () => {
   app.set('views', path.join(__dirname, '/views'))
