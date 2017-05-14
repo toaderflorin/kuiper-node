@@ -4,7 +4,7 @@
   "description": "A simple content management system.",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/jasmine-node test/integration",
     "start": "node src/index.js"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
   "license": "ISC",
   "devDependencies": {
     "jasmine": "^2.6.0",
+    "jasmine-node": "^1.14.5",
     "standard": "^10.0.2"
   }
 }

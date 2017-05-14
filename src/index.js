@@ -28,8 +28,9 @@ const start = async () => {
   app.post('/new', controllers.postsController.create)
   app.get('/delete/:id', controllers.postsController.delete)
   
-
+  console.log('Base_url: ', base_url)
   await repos.createDbIfMissing()
+  global.baserUrl = 'http://localhost:3000'
   app.listen(3000, () => console.log('Started successfully, open localhost:3000.'))
 }
 

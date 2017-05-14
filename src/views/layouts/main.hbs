@@ -6,13 +6,10 @@
 </head>
 
 <body style="margin:0; font-family: Roboto; font-weight: 300;">
-  <div class="header">
-    <b>    
-      kuiper      
-    </b> 
+  <div class="header">   
     
-    {{#if user}} > welcome
-    
+    {{#if user}} welcome
+  
     <b>{{user}}</b> >
     <a href="http://localhost:3000/new">new</a> |
     <a href="http://localhost:3000/posts/{{user}}">profile</a> |
@@ -20,6 +17,7 @@
     <a href="http://localhost:3000/logoff">log off</a> 
     
     {{/if}}
+    
   </div>
   <div style="height: 4px; background: linear-gradient(0, #FFF, #BBB);"></div>
   <div class="main2">
