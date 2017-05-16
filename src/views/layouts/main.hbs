@@ -3,25 +3,28 @@
 <head>
   <link rel="stylesheet" type="text/css" href="{{baseUrl}}/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+  <script>
+    function confirmDelete(url) {
+      var r = confirm('Are you sure you want to delete?');      
+      if (r == true) {
+        window.location.href = url;
+      }
+    }
+  </script>
 </head>
 
 <body style="margin:0; font-family: Roboto; font-weight: 300;">
   <div class="header">
     <div class="header-inner">
-      {{#unless user}}
-      
-      <b>Log on</b>       
-      
+      {{#unless user}}      
+      <b>Log on</b>             
       {{/unless}} 
       
       {{#if user}} welcome
-
-      <b>{{user}}</b> >
-      <a href="{{baseUrl}}/new">new</a> |
+      <b>{{user}}</b> >    
       <a href="{{baseUrl}}/posts/{{user}}">my stuff</a> |
-      <a href="{{baseUrl}}/users">others</a> |
+      <a href="{{baseUrl}}/users">all users</a> |
       <a href="{{baseUrl}}/logoff">log off</a> 
-
       {{/if}}
     </div>
   </div>

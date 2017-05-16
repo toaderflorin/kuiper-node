@@ -1,0 +1,1 @@
+exports.baseUrl = require('./baseUrl')

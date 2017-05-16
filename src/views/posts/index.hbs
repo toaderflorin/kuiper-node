@@ -1,19 +1,21 @@
+<a href="{{baseUrl}}/new">new</a>
+
 {{#unless hasPosts}}
 
-<div class="grayed-out">No posts to show.</div>
+<p class="grayed-out">No posts to show.</p>
 
 {{/unless}}
 
 {{#each posts}}
 
 <h2>{{title}}</h2>
-<div style="color:#AAA;">Posted at {{postedAt}} by <b>{{user}}</b></div>
+<div style="color:#AAA; margin-bottom: 5px;">Posted at {{postedAt}} by <b>{{user}}</b></div>
 <div>{{content}}</div>
 
 {{#if ownProfile}}
 
 <a href="{{baseUrl}}/posts/{{user}}/{{id}}">Edit</a> |
-<a href="{{baseUrl}}/delete/{{id}}">Delete</a> 
+<a style="cursor: pointer;" onclick="confirmDelete('{{baseUrl}}/delete/{{id}}')">Delete</a> 
 
 {{/if}} 
 

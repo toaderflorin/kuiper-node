@@ -1,9 +1,10 @@
 const authenticate = (req, res, next) => {
-  const user = req.cookies['user'];
-  console.log('COOKIE IS:', user)
-
-  if (!user && req.url != '/') {    
-    res.redirect('http://localhost:3000/')
+  const user = req.cookies.user
+ 
+  // this sucks
+  if (user === 'undefined' && req.url != '/') {    
+    console.log('here')
+    res.redirect(global.baseUrl)
   } else {
     res.cookie('user', user)
     next()

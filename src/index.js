@@ -8,6 +8,7 @@ const passport = require('passport')
 const authenticate = require('./authenticate')
 const configureRoutes = require('./routes')
 const cookieParser = require('cookie-parser')
+const helpers = require('./helpers')
 
 const start = async () => {
   app.set('views', path.join(__dirname, '/views'))  
@@ -21,9 +22,7 @@ const start = async () => {
     defaultLayout: 'main.hbs', 
     layoutsDir: __dirname + '/views/layouts',
     helpers: {
-      baseUrl: () => {
-        return global.baserUrl
-      }
+      baseUrl: helpers.baseUrl
     }
   }))
 
