@@ -10,17 +10,7 @@ const configureRoutes = require('./routes')
 const cookieParser = require('cookie-parser')
 
 const start = async () => {
-  app.set('views', path.join(__dirname, '/views'))
-
-  const hbs = expressHbs.create({
-    helpers: {
-      baseUrl: (context, options) => {
-        return 'blabla'
-      }
-    }
-  });
-  
-  app.engine('handlebars', hbs.engine);
+  app.set('views', path.join(__dirname, '/views'))  
   app.set('view engine', 'handlebars');
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: true }))
@@ -29,7 +19,12 @@ const start = async () => {
 
   app.engine('hbs', expressHbs({ extname: 'hbs', 
     defaultLayout: 'main.hbs', 
-    layoutsDir: __dirname + '/views/layouts' 
+    layoutsDir: __dirname + '/views/layouts',
+    helpers: {
+      baseUrl: () => {
+        return global.baserUrl
+      }
+    }
   }))
 
   app.use(authenticate)
