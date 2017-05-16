@@ -10,7 +10,8 @@ class PostsController {
     res.render('posts/index.hbs', {
       user: global.user,
       posts: posts.map((p) => { return Object.assign(p, { ownProfile }) }),
-      baseUrl: global.baseUrl
+      baseUrl: global.baseUrl,
+      hasPosts: posts.length > 0
     })
   }
 
@@ -18,7 +19,7 @@ class PostsController {
     if (req.method === 'GET') {
       res.render('posts/create.hbs', {
         baseUrl: global.baseUrl,
-        user: global.user
+        user: global.user        
       })
     } else if (req.method === 'POST') {
       const post = new models.Post(global.user, req.body.title, req.body.content)
