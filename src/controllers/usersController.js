@@ -7,22 +7,26 @@ class UsersController {
         baseUrl: global.baseUrl
       })
     } else if (req.method === 'POST') {
-      global.user = req.body.user
-      res.redirect(`http://localhost:3000/posts/${global.user}`)
+      const currentUser = req.body.user
+      res.cookie('user', currentUser)
+      res.redirect(`http://localhost:3000/posts/${currentUser}`)
     }
   }
 
   async logoff(req, res) {
     if (req.method === 'GET') {
+      res.clearCookie('user')
       res.redirect('http://localhost:3000')
     }
   }
 
   async users(req, res) {
     const users = await repositories.postsRepository.getUsers()
+    const currentUser = req.cookies.user
+
     res.render('users/list.hbs', {
       baseUrl: global.baseUrl,
-      user: global.user,
+      user: currentUser,
       users
     })
   }

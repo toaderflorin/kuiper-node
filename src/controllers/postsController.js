@@ -3,12 +3,13 @@ const repositories = require('../repositories')
 
 class PostsController {
   async index(req, res) {
-    const user = req.params['user']
+    const user = req.params.user
     const posts = await repositories.postsRepository.list(user)
     const ownProfile = (user === global.user)
-
+    const currentUser = req.cookies.user
+    
     res.render('posts/index.hbs', {
-      user: global.user,
+      user: currentUser,
       posts: posts.map((p) => { return Object.assign(p, { ownProfile }) }),
       baseUrl: global.baseUrl,
       hasPosts: posts.length > 0
@@ -16,15 +17,17 @@ class PostsController {
   }
 
   async create(req, res) {
+    const currentUser = req.cookies.user
+
     if (req.method === 'GET') {
       res.render('posts/create.hbs', {
         baseUrl: global.baseUrl,
-        user: global.user        
+        user: currentUser        
       })
     } else if (req.method === 'POST') {
       const post = new models.Post(global.user, req.body.title, req.body.content)
       await repositories.postsRepository.insert(post)
-      res.redirect('/posts/' + global.user)
+      res.redirect('/posts/' + currentUser)
     }
   }
 
@@ -33,20 +36,22 @@ class PostsController {
   }
 
   async show(req, res) {
-    const id = Number.parseInt(req.params['id'])
+    const id = Number.parseInt(req.params.id)
     const post = await repositories.postsRepository.get(id)
-    
+    const currentUser = req.cookies.user
+
     res.render('posts/show.hbs', {
       baseUrl: global.baseUrl,
-      user: global.user,      
+      currentUser,
       post
     })
   }
 
   async delete(req, res) {
-    const id = Number.parseInt(req.params['id'])
+    const currentUser = req.cookies.user
+    const id = Number.parseInt(req.params.id)
     await repositories.postsRepository.delete(id)
-    res.redirect(`/posts/${global.user}`)
+    res.redirect(`/posts/${currentUser}`)
   }
 }
 

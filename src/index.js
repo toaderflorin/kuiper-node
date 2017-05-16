@@ -7,6 +7,7 @@ const repos = require('./repositories')
 const passport = require('passport')
 const authenticate = require('./authenticate')
 const configureRoutes = require('./routes')
+const cookieParser = require('cookie-parser')
 
 const start = async () => {
   app.set('views', path.join(__dirname, '/views'))
@@ -24,7 +25,8 @@ const start = async () => {
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: true }))
   app.use(express.static(__dirname + '/content'))
-  
+  app.use(cookieParser())
+
   app.engine('hbs', expressHbs({ extname: 'hbs', 
     defaultLayout: 'main.hbs', 
     layoutsDir: __dirname + '/views/layouts' 
