@@ -5,8 +5,8 @@ class PostsController {
   async index(req, res) {
     const user = req.params.user
     const posts = await repositories.postsRepository.list(user)
-    const ownProfile = (user === global.user)
     const currentUser = req.cookies.user
+    const ownProfile = (user === currentUser)
     
     res.render('posts/index.hbs', {
       user: currentUser,
@@ -25,7 +25,7 @@ class PostsController {
         user: currentUser        
       })
     } else if (req.method === 'POST') {
-      const post = new models.Post(global.user, req.body.title, req.body.content)
+      const post = new models.Post(currentUser, req.body.title, req.body.content)
       await repositories.postsRepository.insert(post)
       res.redirect('/posts/' + currentUser)
     }
