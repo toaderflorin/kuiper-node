@@ -4,6 +4,10 @@ class Post {
     this.title = title
     this.content = content
     this.user = user    
+    const dtNumber = Date.now()
+    const dt = new Date(dtNumber)
+
+    this.postedAt = dt.toLocaleString()
     this.comments = []
   }
 }

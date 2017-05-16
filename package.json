@@ -4,7 +4,7 @@
   "description": "A simple content management system.",
   "main": "src/index.js",
   "scripts": {
-    "test": "./node_modules/.bin/jasmine-node test/integration",
+    "test": "./node_modules/.bin/jasmine-node test",
     "start": "node src/index.js"
   },
   "dependencies": {

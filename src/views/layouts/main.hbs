@@ -6,21 +6,30 @@
 </head>
 
 <body style="margin:0; font-family: Roboto; font-weight: 300;">
-  <div class="header">   
-    
-    {{#if user}} welcome
-  
-    <b>{{user}}</b> >
-    <a href="http://localhost:3000/new">new</a> |
-    <a href="http://localhost:3000/posts/{{user}}">profile</a> |
-    <a href="http://localhost:3000/users">users</a> |
-    <a href="http://localhost:3000/logoff">log off</a> 
-    
-    {{/if}}
-    
+  <div class="header">
+    <div class="header-inner">
+      {{#unless user}}
+      
+      <b>Log on</b>       
+      
+      {{/unless}} 
+      
+      {{#if user}} welcome
+
+      <b>{{user}}</b> >
+      <a href="http://localhost:3000/new">new</a> |
+      <a href="http://localhost:3000/posts/{{user}}">my stuff</a> |
+      <a href="http://localhost:3000/users">others</a> |
+      <a href="http://localhost:3000/logoff">log off</a> 
+
+      {{/if}}
+    </div>
   </div>
   <div style="height: 4px; background: linear-gradient(0, #FFF, #BBB);"></div>
-  <div class="main2">
+  {{!--<p>
+    URL should go here: {{baseUrl}}
+  </p>--}}
+  <div class="main">
     {{{body}}}
   </div>
 </body>

@@ -1,6 +1,7 @@
 {{#each posts}}
 
 <h2>{{title}}</h2>
+<div style="color:#AAA;">Posted at {{postedAt}} by <b>{{user}}</b></div>
 <div>{{content}}</div>
 
 {{#if ownProfile}}
@@ -9,5 +10,10 @@
 <a href="http://localhost:3000/delete/{{id}}">Delete</a> 
 
 {{/if}} 
+
+<p>
+  {{ts}}
+</p>
+
 
 {{/each}}

@@ -4,8 +4,8 @@ a {
 }
 
 h1 {    
-    font-size: 31px;
-    font-weight: 400;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 h2 {    
@@ -20,7 +20,15 @@ body {
 }
 
 .header {
-    max-height: 64px; background: linear-gradient(0, #666, #777); color: white; padding: 20px;
+  max-height: 64px; 
+  background: linear-gradient(0, #333, #555); 
+  color: #BBB; padding: 20px;  
+}
+
+.header-inner {
+    width: 800px;  
+    margin-left: auto;
+    margin-right: auto;
 }
 
 a.header {
@@ -30,12 +38,13 @@ a.header {
 input, textarea {
     padding: 5px;
     border: solid 1px lightgray;
+    box-shadow: 0px 0px 9px #EEE;
 }
 
 input:focus, textarea:focus {
     outline: none !important;
     border: solid 1px lightgray;    
-    box-shadow: 0px 0px 9px #E5E5E5;
+    box-shadow: 0px 0px 9px #85D5D5;
 }
 
 input[type=submit] {
@@ -44,10 +53,12 @@ input[type=submit] {
     padding-right: 15px;
 }
 
-.main2 {   
+.main {   
     padding:20px;
     color: #777;
     font-weight: 300;    
     line-height:16pt; 
-    width: 1000px;    
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;    
 }

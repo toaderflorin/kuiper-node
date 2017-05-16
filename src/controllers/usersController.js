@@ -3,7 +3,9 @@ const repositories = require('../repositories')
 class UsersController {
   async logon(req, res) {
     if (req.method === 'GET') {
-      res.render('users/logon.hbs')
+      res.render('users/logon.hbs', {
+        baseUrl: global.baseUrl
+      })
     } else if (req.method === 'POST') {
       global.user = req.body.user
       res.redirect(`http://localhost:3000/posts/${global.user}`)
@@ -18,7 +20,11 @@ class UsersController {
 
   async users(req, res) {
     const users = await repositories.postsRepository.getUsers()
-    res.render('users/list', { user: global.user, users })
+    res.render('users/list.hbs', {
+      baseUrl: global.baseUrl,
+      user: global.user,
+      users
+    })
   }
 }
 

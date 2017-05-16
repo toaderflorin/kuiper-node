@@ -9,8 +9,8 @@ class PostsRepository {
 
   async insert(post) {
     await this._sqliteWrapper.run(
-      `INSERT INTO posts ('id', 'title', 'content', 'user') 
-      VALUES ('${post.id}','${post.title}', '${post.content}', '${post.user}')`)
+      `INSERT INTO posts ('id', 'title', 'content', 'user', 'postedAt') 
+      VALUES ('${post.id}','${post.title}', '${post.content}', '${post.user}', '${post.postedAt}')`)
   }
 
   async get(id) {
@@ -21,8 +21,8 @@ class PostsRepository {
 
   async list(user) {
     const query = `SELECT * FROM posts WHERE user='${user}'`
-    const result = await this._sqliteWrapper.all(query)
-    return result
+    const results = await this._sqliteWrapper.all(query)
+    return results
   }
 
   async delete(id) {
