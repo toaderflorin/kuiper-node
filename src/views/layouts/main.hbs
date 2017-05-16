@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="http://localhost:3000/style.css">
+  <link rel="stylesheet" type="text/css" href="{{baseUrl}}/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
 </head>
 
@@ -17,10 +17,10 @@
       {{#if user}} welcome
 
       <b>{{user}}</b> >
-      <a href="http://localhost:3000/new">new</a> |
-      <a href="http://localhost:3000/posts/{{user}}">my stuff</a> |
-      <a href="http://localhost:3000/users">others</a> |
-      <a href="http://localhost:3000/logoff">log off</a> 
+      <a href="{{baseUrl}}/new">new</a> |
+      <a href="{{baseUrl}}/posts/{{user}}">my stuff</a> |
+      <a href="{{baseUrl}}/users">others</a> |
+      <a href="{{baseUrl}}/logoff">log off</a> 
 
       {{/if}}
     </div>
