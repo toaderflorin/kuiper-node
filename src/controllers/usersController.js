@@ -1,4 +1,4 @@
-const repositories = require('../repositories')
+const { postsRepository } = require('../repositories')
 
 class UsersController {
   async logon(req, res) {
@@ -9,19 +9,19 @@ class UsersController {
     } else if (req.method === 'POST') {
       const currentUser = req.body.user
       res.cookie('user', currentUser)
-      res.redirect(`http://localhost:3000/posts/${currentUser}`)
+      res.redirect(`${global.baseUrl}/${currentUser}`)
     }
   }
 
   async logoff(req, res) {
     if (req.method === 'GET') {
       res.clearCookie('user')
-      res.redirect('http://localhost:3000')
+      res.redirect(`${global.baseUrl}`)
     }
   }
 
   async users(req, res) {
-    const users = await repositories.postsRepository.getUsers()
+    const users = await postsRepository.getUsers()
     const currentUser = req.cookies.user
 
     res.render('users/list.hbs', {

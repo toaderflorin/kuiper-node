@@ -8,13 +8,13 @@
 
 {{#each posts}}
 
-<h2>{{title}}</h2>
+<h2><a href="{{baseUrl}}/posts/{{user}}/{{id}}">{{title}}</a></h2>
 <div style="color:#AAA; margin-bottom: 5px;">Posted at {{postedAt}} by <b>{{user}}</b></div>
 <div>{{content}}</div>
 
 {{#if ownProfile}}
 
-<a href="{{baseUrl}}/posts/{{user}}/{{id}}">Edit</a> |
+|
 <a style="cursor: pointer;" onclick="confirmDelete('{{baseUrl}}/delete/{{id}}')">Delete</a> 
 
 {{/if}} 

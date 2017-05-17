@@ -1,6 +1,7 @@
 class CommentsController {
-  add (req, res) {
-    
+  create(req, res) {
+    const postId = req.params.postId
+    const currentUser = req.cookies.user
   }
 }
 

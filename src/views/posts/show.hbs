@@ -1,10 +1,18 @@
 <h2>{{post.title}}</h2>
 <div>{{post.content}}</div>
-
+{{!--
 <a href="{{baseUrl}}/posts/{{user}}/{{id}}">Show</a> |
-<a href="{{baseUrl}}/delete/{{id}}">Delete</a>
+<a href="{{baseUrl}}/delete/{{id}}">Delete</a>--}}
 
 <h2> Comments </h2>
 <div>
   No comments to show.
 </div>
+
+<form action="{{baseUrl}}/comment/{{post.id}}" method="post">  
+  <p> 
+    <input name="comment" type="text" style="width:300px;" /> 
+    <input type="submit" value="Comment" />
+  </p>
+    
+</form>

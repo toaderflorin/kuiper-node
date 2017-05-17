@@ -1,3 +1,1 @@
-const Post = require('./post')
-
-exports.Post = Post
+exports.Post = require('./post')
