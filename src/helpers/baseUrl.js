@@ -1,4 +1,5 @@
-const baseUrl = () => {
+const baseUrl = (context) => {
+  console.log('GOT: ', context)
   return global.baserUrl
 }
 

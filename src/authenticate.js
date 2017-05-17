@@ -4,7 +4,7 @@ const authenticate = (req, res, next) => {
   // this sucks
   if (user === 'undefined' && req.url != '/') {       
     res.redirect(global.baseUrl)
-  } else {
+  } else {   
     res.cookie('user', user)
     next()
   }

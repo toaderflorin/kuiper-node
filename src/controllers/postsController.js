@@ -13,7 +13,6 @@ class PostsController {
       posts: posts.map((p) => { 
         return Object.assign(p, { ownProfile }) 
       }),
-      baseUrl: global.baseUrl,
       hasPosts: posts.length > 0
     })
   }
@@ -40,9 +39,8 @@ class PostsController {
     const id = Number.parseInt(req.params.id)
     const post = await postsRepository.get(id)
     const currentUser = req.cookies.user
-    console.log('here')
-    res.render('posts/show.hbs', {
-      baseUrl: global.baseUrl,
+       
+    res.render('posts/show.hbs', {      
       user: currentUser,
       post
     })

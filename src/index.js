@@ -28,11 +28,12 @@ const start = async () => {
   }))
 
   app.use(authenticate)
+  global.baseUrl = 'http://localhost:3000'
 
   configureRoutes(app)  
   await createDbIfMissing()
 
-  global.baserUrl = 'http://localhost:3000'
+
   app.listen(3000, () => console.log('Started successfully, open localhost:3000.'))
 }
 
