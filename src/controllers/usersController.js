@@ -8,8 +8,7 @@ class UsersController {
       })
     } else if (req.method === 'POST') {
       const currentUser = req.body.user
-      res.cookie('user', currentUser)
-      console.log('asdasd', global.baseUrl)
+      res.cookie('user', currentUser)      
       res.redirect(`${global.baseUrl}/posts/${currentUser}`)
     }
   }

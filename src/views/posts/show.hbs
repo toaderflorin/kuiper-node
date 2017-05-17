@@ -1,18 +1,28 @@
 <h2>{{post.title}}</h2>
 <div>{{post.content}}</div>
-{{!--
-<a href="{{baseUrl}}/posts/{{user}}/{{id}}">Show</a> |
-<a href="{{baseUrl}}/delete/{{id}}">Delete</a>--}}
+
+<p>
+  <a href="{{baseUrl}}/delete/{{id}}">Edit</a> |
+  <a href="{{baseUrl}}/delete/{{id}}">Delete</a>
+</p>
 
 <h2> Comments </h2>
-<div>
-  No comments to show.
-</div>
 
-<form action="{{baseUrl}}/comment/{{post.id}}" method="post">  
-  <p> 
-    <input name="comment" type="text" style="width:300px;" /> 
-    <input type="submit" value="Comment" />
-  </p>
-    
+{{#unless hasComments}}
+<p>
+  No comments to show.
+</p>
+{{/unless}}
+
+{{#each comments}}
+<p><b>{{user}}</b> wrote: {{comment}}</p>
+{{/each}}
+
+<form action="{{baseUrl}}/comment/{{post.user}}/{{post.id}}" method="post">  
+  <div style="margin-bottom: 8px;"> 
+    <input name="comment" type="text" style="width:300px;" />  
+  </div>
+  <div> 
+    <input type="submit" value="Comment" autocomplete="off" />
+  </div>  
 </form>

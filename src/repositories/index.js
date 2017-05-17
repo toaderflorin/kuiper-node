@@ -1,5 +1,5 @@
 const PostsRepository = require('./postsRepository')
-const CommentsRepositoryr = require('./commentsRepository')
+const CommentsRepository = require('./commentsRepository')
 const SqliteWrapper = require('./sqliteWrapper')
 const sqlite3 = require('sqlite3')
 const db = new sqlite3.Database('kuiper.db')
@@ -12,3 +12,4 @@ async function createDbIfMissing () {
 
 exports.createDbIfMissing = createDbIfMissing
 exports.postsRepository = new PostsRepository(db)
+exports.commentsRepository = new CommentsRepository(db)

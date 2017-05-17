@@ -1,5 +1,5 @@
 const { Post } = require('../models')
-const { postsRepository } = require('../repositories')
+const { postsRepository, commentsRepository } = require('../repositories')
 
 class PostsController {
   async index(req, res) {
@@ -39,10 +39,13 @@ class PostsController {
     const id = Number.parseInt(req.params.id)
     const post = await postsRepository.get(id)
     const currentUser = req.cookies.user
+    const comments = await commentsRepository.getForPost(id)
        
     res.render('posts/show.hbs', {      
       user: currentUser,
-      post
+      post,
+      comments,
+      hasComments: (comments.length > 0)
     })
   }
 

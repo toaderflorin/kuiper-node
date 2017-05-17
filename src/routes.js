@@ -10,6 +10,6 @@ module.exports = (app) => {
   app.get('/users', usersController.users)
   app.get('/new', postsController.create)
   app.post('/new', postsController.create)
-  app.post('/comment/:postId', commentsController.create)
+  app.post('/comment/:user/:postId', commentsController.create)
   app.get('/delete/:id', postsController.delete)  
 }
