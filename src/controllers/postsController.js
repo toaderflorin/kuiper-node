@@ -1,33 +1,22 @@
 const { Post } = require('../models')
-const { postsRepository, commentsRepository } = require('../repositories')
+const { postsRepository } = require('../repositories')
 
 class PostsController {
   async index(req, res) {
-    const user = req.params.user
-    const posts = await postsRepository.list(user)
-    const currentUser = req.cookies.user
-    const ownProfile = (user === currentUser)
-
-    res.render('posts/index.hbs', {
-      user: currentUser,
-      posts: posts.map((p) => { 
-        return Object.assign(p, { ownProfile }) 
-      }),
+    const posts = await postsRepository.list()
+    res.render('posts/index.hbs', {      
+      posts,
       hasPosts: posts.length > 0
     })
   }
 
-  async create(req, res) {
-    const currentUser = req.cookies.user
-
+  async create(req, res) {      
     if (req.method === 'GET') {
-      res.render('posts/new.hbs', {       
-        user: currentUser
-      })
+      res.render('posts/new.hbs')
     } else if (req.method === 'POST') {
-      const post = new Post(currentUser, req.body.title, req.body.content)
+      const post = new Post(req.body.title, req.body.content)
       await postsRepository.insert(post)
-      res.redirect(`${global.baseUrl}/posts/${currentUser}`)
+      res.redirect(`${global.baseUrl}`)
     }
   }
 
@@ -37,27 +26,18 @@ class PostsController {
 
   async details(req, res) {
     const id = Number.parseInt(req.params.id)
-    const user = req.params.user
     const post = await postsRepository.get(id)
-    const currentUser = req.cookies.user
-    const comments = await commentsRepository.getForPost(id)
-    const ownProfile = (user === currentUser)
        
     res.render('posts/details.hbs', {      
-      user: currentUser,
       post,
-      comments,
-      hasComments: (comments.length > 0),
-      ownProfile
     })
   }
 
   async delete(req, res) {
-    const currentUser = req.cookies.user
     const id = Number.parseInt(req.params.id)
     await postsRepository.delete(id)
-    res.redirect(`${global.baseUrl}/posts/${currentUser}`)
-  }
+    res.redirect(`${global.baseUrl}`)
+  }  
 }
 
 module.exports = PostsController

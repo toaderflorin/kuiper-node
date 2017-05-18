@@ -2,32 +2,6 @@
 <div>{{{post.content}}}</div>
 
 <p>
-  <a href="{{baseUrl}}/delete/{{id}}">Edit</a> |
-  <a href="{{baseUrl}}/delete/{{id}}">Delete</a>
-  {{#if ownProfile}}
-    <a style="cursor: pointer;" onclick="confirmDelete('{{baseUrl}}/delete/{{id}}')">Delete</a> 
-  {{/if}}
-</p>
-
-<p>
-  <h1> Other people wrote... </h1>
-
-  {{#unless hasComments}}
-  <p>
-    No comments to show.
-  </p>
-  {{/unless}}
-
-  {{#each comments}}
-  <p><b>{{user}}</b> wrote: {{comment}}</p>
-  {{/each}}
-
-  <form action="{{baseUrl}}/comment/{{post.user}}/{{post.id}}" method="post">  
-    <div style="margin-bottom: 8px;"> 
-      <input name="comment" type="text" style="width:300px;" />  
-    </div>
-    <div> 
-      <input type="submit" value="Comment" autocomplete="off" />
-    </div>  
-  </form>
+  {{!--<a href="{{baseUrl}}/delete/{{id}}">Edit</a> |--}}
+  <a href="{{baseUrl}}/delete/{{post.id}}">Delete</a>
 </p>

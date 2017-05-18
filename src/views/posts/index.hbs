@@ -9,12 +9,8 @@
 
 {{#each posts}}
 
-<a href="{{baseUrl}}/posts/{{user}}/{{id}}">{{title}}</a>
-<div style="color:#AAA; margin-bottom: 5px;">Posted at {{postedAt}} by <b>{{user}}</b></div>
+<a href="{{baseUrl}}/{{id}}">{{title}}</a>
+<div style="color:#AAA; margin-bottom: 5px;">Posted at {{postedAt}}</div>
 <div>{{{content}}}</div>
-
-<p>
-  {{ts}}
-</p>
 
 {{/each}}

@@ -9,8 +9,8 @@ class PostsRepository {
 
   async insert(post) {
     await this._sqliteWrapper.run(
-      `INSERT INTO posts ('id', 'title', 'content', 'user', 'postedAt') 
-      VALUES ('${post.id}','${post.title}', '${post.content}', '${post.user}', '${post.postedAt}')`)
+      `INSERT INTO posts ('id', 'title', 'content', 'postedAt') 
+      VALUES ('${post.id}','${post.title}', '${post.content}', '${post.postedAt}')`)
   }
 
   async get(id) {
@@ -19,19 +19,15 @@ class PostsRepository {
     return result[0]
   }
 
-  async list(user) {
-    const query = `SELECT * FROM posts WHERE user='${user}'`
+  async list() {
+    const query = `SELECT * FROM posts`
     const results = await this._sqliteWrapper.all(query)
     return results
   }
 
   async delete(id) {
+    console.log('got here')
     await this._sqliteWrapper.run(`DELETE FROM posts WHERE id=${id}`)
-  }
-
-  async getUsers() {
-    const result = await this._sqliteWrapper.all(`SELECT DISTINCT user FROM posts`)
-    return result
   }
 }
 
