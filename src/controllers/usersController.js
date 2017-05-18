@@ -24,7 +24,7 @@ class UsersController {
     const users = await postsRepository.getUsers()
     const currentUser = req.cookies.user
 
-    res.render('users/list.hbs', {
+    res.render('users/index.hbs', {
       baseUrl: global.baseUrl,
       user: currentUser,
       users

@@ -21,7 +21,7 @@ class PostsController {
     const currentUser = req.cookies.user
 
     if (req.method === 'GET') {
-      res.render('posts/create.hbs', {       
+      res.render('posts/new.hbs', {       
         user: currentUser
       })
     } else if (req.method === 'POST') {
@@ -35,14 +35,15 @@ class PostsController {
     res.send('Not implemented yet')
   }
 
-  async show(req, res) {
+  async details(req, res) {
     const id = Number.parseInt(req.params.id)
+    const user = req.params.user
     const post = await postsRepository.get(id)
     const currentUser = req.cookies.user
     const comments = await commentsRepository.getForPost(id)
     const ownProfile = (user === currentUser)
        
-    res.render('posts/show.hbs', {      
+    res.render('posts/details.hbs', {      
       user: currentUser,
       post,
       comments,

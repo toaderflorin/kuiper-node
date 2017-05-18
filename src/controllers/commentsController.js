@@ -8,8 +8,7 @@ class CommentsController {
     const currentUser = req.cookies.user
     const text = req.body.comment  
     const comment = new Comment(user, postId, text)
-    
-    console.log(comment)
+        
     await commentsRepository.insert(comment)
 
     res.redirect(`${global.baseUrl}/posts/${user}/${postId}`)    
