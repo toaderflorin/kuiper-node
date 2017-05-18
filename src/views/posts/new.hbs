@@ -1,9 +1,15 @@
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-<script>tinymce.init({ selector:'textarea' });</script>
+<script>
+  tinymce.init({ 
+    menubar: false,
+    selector: 'textarea',
+    statusbar: false
+  });
+</script>
 
 <form action="" method="post">
   <p>    
-    <input name="title" type="text" style="width:100%; font-size: 11pt;" placeholder="Add A Title For Your Story" autocomplete="off"/>
+    <input name="title" type="text" style="width:100%; font-size: 11pt;" placeholder="Add a title for your story..." autocomplete="off"/>
   </p>  
   
   <textarea name="content" style="width:100%; height:300px;" autocomplete="off" placeholder="blabla"></textarea>
