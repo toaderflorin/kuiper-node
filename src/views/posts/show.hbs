@@ -1,12 +1,15 @@
-<h2>{{post.title}}</h2>
+<h1>{{post.title}}</h1>
 <div>{{post.content}}</div>
 
 <p>
   <a href="{{baseUrl}}/delete/{{id}}">Edit</a> |
   <a href="{{baseUrl}}/delete/{{id}}">Delete</a>
+  {{#if ownProfile}}
+    <a style="cursor: pointer;" onclick="confirmDelete('{{baseUrl}}/delete/{{id}}')">Delete</a> 
+  {{/if}}
 </p>
 
-<h2> Comments </h2>
+<h1> Comments </h1>
 
 {{#unless hasComments}}
 <p>

@@ -40,12 +40,14 @@ class PostsController {
     const post = await postsRepository.get(id)
     const currentUser = req.cookies.user
     const comments = await commentsRepository.getForPost(id)
+    const ownProfile = (user === currentUser)
        
     res.render('posts/show.hbs', {      
       user: currentUser,
       post,
       comments,
-      hasComments: (comments.length > 0)
+      hasComments: (comments.length > 0),
+      ownProfile
     })
   }
 
