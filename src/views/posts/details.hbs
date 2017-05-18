@@ -1,7 +1,6 @@
 <h1>{{post.title}}</h1>
-<div>{{{post.content}}}</div>
+<p>{{{post.content}}}</p>
 
 <p>
-  {{!--<a href="{{baseUrl}}/delete/{{id}}">Edit</a> |--}}
-  <a href="{{baseUrl}}/delete/{{post.id}}">Delete</a>
+  <a href="{{baseUrl}}/delete/{{post.title}}">Delete</a>
 </p>

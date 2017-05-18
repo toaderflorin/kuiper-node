@@ -3,7 +3,6 @@ const expressHbs = require('express-handlebars')
 const path = require('path')
 const bodyParser = require('body-parser')
 const app = express()
-const passport = require('passport')
 const configureRoutes = require('./routes')
 const { baseUrl } = require('./helpers')
 const { createDbIfMissing } = require('./repositories')
@@ -27,7 +26,6 @@ const start = async () => {
   global.baseUrl = 'http://localhost:3000'
 
   configureRoutes(app)  
-  await createDbIfMissing()
 
   app.listen(3000, () => console.log('Started successfully, open localhost:3000.'))
 }

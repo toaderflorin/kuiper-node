@@ -2,40 +2,40 @@ const { Post } = require('../models')
 const { postsRepository } = require('../repositories')
 
 class PostsController {
-  async index(req, res) {
-    const posts = await postsRepository.list()
+  index(req, res) {
+    const posts = postsRepository.list()
     res.render('posts/index.hbs', {      
-      posts,
+      posts: posts.map(p => Object.assign(p, { titleEncoded: encodeURIComponent(p.title) })),
       hasPosts: posts.length > 0
     })
   }
 
-  async create(req, res) {      
+  create(req, res) {      
     if (req.method === 'GET') {
       res.render('posts/new.hbs')
     } else if (req.method === 'POST') {
       const post = new Post(req.body.title, req.body.content)
-      await postsRepository.insert(post)
+      postsRepository.insert(post)
       res.redirect(`${global.baseUrl}`)
     }
   }
 
-  async edit(req, res) {
+  edit(req, res) {
     res.send('Not implemented yet')
   }
 
-  async details(req, res) {
-    const id = Number.parseInt(req.params.id)
-    const post = await postsRepository.get(id)
+  details(req, res) {
+    const decodedName = decodeURIComponent(req.params.name)
+    const post = postsRepository.get(decodedName)
        
     res.render('posts/details.hbs', {      
       post,
     })
   }
 
-  async delete(req, res) {
-    const id = Number.parseInt(req.params.id)
-    await postsRepository.delete(id)
+  delete(req, res) {    
+    const decodedName = decodeURIComponent(req.params.name)
+    postsRepository.delete(decodedName)
     res.redirect(`${global.baseUrl}`)
   }  
 }

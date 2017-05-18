@@ -1,33 +1,29 @@
-const sqlite3 = require('sqlite3')
-const promisify = require('../promisify')
-const SqliteWrapper = require('./sqliteWrapper')
+const fs = require('fs')
+const outputFolder = `${__dirname}/../output`
 
 class PostsRepository {
-  constructor(db) {
-    this._sqliteWrapper = new SqliteWrapper(db)
+  insert(post) {
+    const result = fs.writeFileSync(`${outputFolder}/${post.title}.html`, `${post.content}`)
   }
 
-  async insert(post) {
-    await this._sqliteWrapper.run(
-      `INSERT INTO posts ('id', 'title', 'content', 'postedAt') 
-      VALUES ('${post.id}','${post.title}', '${post.content}', '${post.postedAt}')`)
+  get(name) {  
+    const content = fs.readFileSync(`${outputFolder}/${name}.html`, 'UTF-8')
+    const result = { title: name, content }
+    return result
   }
 
-  async get(id) {
-    const query = `SELECT * FROM posts WHERE id='${id}'`    
-    const result = await this._sqliteWrapper.all(`SELECT * FROM posts WHERE id=${id}`)    
-    return result[0]
-  }
+  list() {
+    const results = fs.readdirSync(outputFolder).map(f => {
+      return {
+        title: f.replace('.html', '')        
+      }
+    })
 
-  async list() {
-    const query = `SELECT * FROM posts`
-    const results = await this._sqliteWrapper.all(query)
     return results
   }
 
-  async delete(id) {
-    console.log('got here')
-    await this._sqliteWrapper.run(`DELETE FROM posts WHERE id=${id}`)
+  delete(name) {
+    fs.unlinkSync(`${outputFolder}/${name}.html`)
   }
 }
 

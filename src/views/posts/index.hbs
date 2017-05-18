@@ -3,14 +3,14 @@
 </p>
 <br />
 
+<h1>Your posts</h1>
+
 {{#unless hasPosts}}
 <p class="grayed-out">No posts to show.</p>
 {{/unless}}
 
 {{#each posts}}
-
-<a href="{{baseUrl}}/{{id}}">{{title}}</a>
-<div style="color:#AAA; margin-bottom: 5px;">Posted at {{postedAt}}</div>
-<div>{{{content}}}</div>
-
+<p>
+<a href="{{baseUrl}}/{{title}}">{{title}}</a>
+</p>
 {{/each}}
